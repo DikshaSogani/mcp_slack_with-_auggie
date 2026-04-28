@@ -1,0 +1,20 @@
+# Core
+slack-sdk             # Slack Web API client (server.py, embeddings.py, fetch_channels.py)
+python-dotenv         # Load .env into os.environ
+mcp                   # FastMCP server framework (server.py exposes tools over stdio)
+requests              # HTTP calls — Slack file downloads (server.py, embeddings.py)
+
+# Semantic Search — high-performance stack
+# qdrant-client[fastembed] bundles:
+#   • Qdrant local vector DB (HNSW, auto-persisted, no server needed)
+#   • FastEmbed (ONNX runtime — fast, no GPU / PyTorch required)
+#     default model: BAAI/bge-small-en-v1.5 (384-dim dense embeddings)
+qdrant-client[fastembed]
+
+# Note: the AI agent itself (aiclient.py) and image descriptions (vision.py)
+# shell out to the `auggie` CLI — install it separately via npm:
+#   npm install -g @augmentcode/auggie && auggie login
+
+# Testing
+pytest
+pytest-asyncio
